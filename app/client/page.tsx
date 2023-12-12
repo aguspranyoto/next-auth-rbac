@@ -13,6 +13,8 @@ export default function ClientPage() {
     },
   });
 
+  if (!session?.user) return;
+
   return (
     <div className="w-full">
       <h1 className="text-4xl text-center py-10">Client Page</h1>
