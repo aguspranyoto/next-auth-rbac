@@ -2,11 +2,14 @@ import { UserCard } from "@/components";
 import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
 import React from "react";
+import { redirect } from "next/navigation";
 
 async function Users() {
   const session = await getServerSession(options);
 
-  if (!session?.user) return;
+  if (!session) {
+    redirect("/api/auth/signin?callbackUrl=/server");
+  }
 
   return (
     <div className="w-full">
