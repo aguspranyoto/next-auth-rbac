@@ -5,6 +5,9 @@ import React from "react";
 
 async function Users() {
   const session = await getServerSession(options);
+
+  if (!session?.user) return;
+
   return (
     <div className="w-full">
       <h1 className="text-4xl text-center py-10">Users Page</h1>
